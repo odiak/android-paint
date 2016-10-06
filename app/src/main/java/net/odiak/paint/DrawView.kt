@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.Path
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -16,6 +15,7 @@ class DrawView(context: Context, attrs: AttributeSet? = null) : View(context, at
     private val paint2 = Paint().apply {
         color = Color.BLACK
         strokeWidth = 5f
+        strokeCap = Paint.Cap.ROUND
     }
     private var bitmap: Bitmap? = null
     private var canvas: Canvas? = null
@@ -68,9 +68,7 @@ class DrawView(context: Context, attrs: AttributeSet? = null) : View(context, at
         println("@ $x, $y")
 
         canvas?.let {
-            it.drawPath(Path().apply {
-                addRect(x, y, x + 10, y + 10, Path.Direction.CW)
-            }, paint2)
+            it.drawLine(lastX, lastY, x, y, paint2)
             invalidate()
         }
     }
