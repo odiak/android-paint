@@ -9,5 +9,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
+        val drawView = findViewById(R.id.drawView) as DrawView
+        val clearButton = findViewById(R.id.clearButton)!!
+
+        clearButton.setOnClickListener {
+            drawView.clear()
+        }
     }
 }

@@ -78,4 +78,9 @@ class DrawView(context: Context, attrs: AttributeSet? = null) : View(context, at
 
         canvas.drawBitmap(bitmap, 0f, 0f, paint)
     }
+
+    fun clear() {
+        canvas?.drawColor(Color.WHITE)
+        invalidate()
+    }
 }
