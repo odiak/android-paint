@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import java.io.OutputStream
 
 class DrawView(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
 
@@ -82,5 +83,9 @@ class DrawView(context: Context, attrs: AttributeSet? = null) : View(context, at
     fun clear() {
         canvas?.drawColor(Color.WHITE)
         invalidate()
+    }
+
+    fun saveTo(stream: OutputStream): Boolean {
+        return bitmap?.compress(Bitmap.CompressFormat.PNG, 100, stream) ?: false
     }
 }
